@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Charles's Blog</title>
+    <link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css">
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+<div>
+    <div id="container">
+        <header id="header">
+            <div id="header-main" class="header-inner">
+                <div class="outer">
+                    <a href="/" id="logo">
+                        <i class="logo"></i>
+                        <span class="site-title">Charles's Blog</span>
+                    </a>
+                    <nav id="main-nav">
+                        <a class="main-nav-link" href="/.">主页</a>
+                        <a class="main-nav-link" href="/archives">目录</a>
+                        <a class="main-nav-link" href="http://blog.csdn.net/xeseo">旧站</a>
+                        <a class="main-nav-link" href="/about">关于我</a>
+                    </nav>
+                    <nav id="sub-nav">
+                        <div class="profile" id="profile-nav">
+                            <a id="profile-anchor" href="javascript:;">
+                                <img class="avatar" src="https://www.gravatar.com/avatar/e8022ebe2f6f01924ccded8d4db8b9fa">
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                        </div>
+                    </nav>
+                    <div id="search-form-wrap">
+                        <form class="search-form">
+                            <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+                            <button type="submit" class="search-form-submit"></button>
+                        </form>
+                        <script>!function(T){var N={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(未命名)"},ROOT_URL:"/",CONTENT_URL:"/content.json"};T.INSIGHT_CONFIG=N}(window)
+                        </script>
+                        <script src="/js/insight.js"></script>
+                    </div>
+                </div>
+            </div>
+            <div id="main-nav-mobile" class="header-sub header-inner">
+                <table class="menu outer">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a class="main-nav-link" href="/.">主页</a>
+                        </td>
+                        <td>
+                            <a class="main-nav-link" href="/archives">目录</a>
+                        </td>
+                        <td>
+                            <a class="main-nav-link" href="http://blog.csdn.net/xeseo">旧站</a>
+                        </td>
+                        <td>
+                            <a class="main-nav-link" href="/about">关于我</a>
+                        </td>
+                        <td>
+                            <div class="search-form">
+                                <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </header>
+        <div class="outer">
+            <aside id="profile">
+                <div class="inner profile-inner">
+                    <div class="base-info profile-block"><img id="avatar"
+                                                              src="">
+                        <h2 id="name">Charles</h2>
+                        <h3 id="title">懂得前端和移动，设计过架构，做过管理，也搞过自动化和运维，明白各种测试，知晓处理大数据。保持危机感和谦逊，方能更进一步</h3><span
+                                id="location"><i class="fa fa-map-marker"></i> 中国 - 上海</span> <a id="follow"
+                                                                                                 target="_blank"
+                                                                                                 href="http://edisonxu.org/about">关注我</a>
+                    </div>
+                    <div class="article-info profile-block">
+                        <div class="article-info-block"> 12 <span>文章</span></div>
+                        <div class="article-info-block"> 9 <span>标签</span></div>
+                    </div>
+                    <div class="profile-block social-links">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td><a href="https://github.com/EdisonXu" target="_blank" title="github"
+                                       class="tooltip"><i class="fa fa-github"></i></a></td>
+                                <td><a href="mailto:edisonxu@outlook.com" target="_blank" title="envelope"
+                                       class="tooltip"><i class="fa fa-envelope"></i></a></td>
+                                <td><a href="/css/images/myweixin.jpg" target="_blank" title="weixin" class="tooltip"><i
+                                        class="fa fa-weixin"></i></a></td>
+                                <td><a href="/atom.xml" target="_blank" title="rss" class="tooltip"><i
+                                        class="fa fa-rss"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </aside>
+            <section id="main">
+                <article id="post-axon-spring-cloud" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/04/24/axon-spring-cloud.html">CQRS和Event
+                            Sourcing系列（九）：AxonFramework与SpringCloud的整合</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/04/24/axon-spring-cloud.html">
+                                    <time datetime="2017-04-24T07:01:51.000Z" itemprop="datePublished">2017-04-24</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg0"><p></p>
+                            <blockquote><p>
+                                上一篇里，我们在利用Axon3的DistributeCommand的JGroup支持，和DistributedEvent对AMQP的支持，实现了分布式环境下的CQRS和EventSourcing。<br>在这一篇中，我们将把Axon3与当下比较火热的微服务框架——SpringCloud进行整合，并将其微服务化。
+                            </p></blockquote>
+                            <h6 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h6>
+                            <p>AxonFramework对SpringCloud的支持，是从3.0.2才开始的，但是在3.0.2和3.0.3两个版本，均存在blocking bug，<strong>所以要想与SpringCloud完成整合，版本必须大于等于3.0.4</strong>。<br>PS：连续跳坑，debug读代码，帮Axon找BUG，血泪换来的结论……好在社区足够活跃，作者也比较给力，连续更新。
+                            </p>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/04/24/axon-spring-cloud.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-axon-distribute" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/04/01/axon-distribute.html">CQRS和Event
+                            Sourcing系列（八）：DistributeCommand和DistributeEvent</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/04/01/axon-distribute.html">
+                                    <time datetime="2017-04-01T07:01:51.000Z" itemprop="datePublished">2017-04-01</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg1"><p></p>
+                            <blockquote><p>
+                                上一篇我们才算真正实现了一个基于Axon3的例子，本篇我们来尝试实现在分布式环境下利用Axon3做CQRS，即把CommandSide和QuerySide变成两个独立应用，分别可以启多份实例。</p>
+                            </blockquote>
+                            <p>首先，我们回顾一下CQRS&amp;EventSourcing模式下，整个架构的关键点，或者说最大的特点：</p>
+                            <ul>
+                                <li>CommandSide和QuerySide的持久层分离；</li>
+                                <li>保存对Aggregate状态造成变化的Event，而不是状态本身；</li>
+                                <li>Aggregate的状态全局原子化操作；</li>
+                                <li>适用于读大于写的场景；<br>我们前面的例子，是在一个应用里面实现了CQRS模式，而在分布式场景下，有如下要求：</li>
+                                <li>CommandSide和QuerySide可以不在同一个节点(甚至不在同一个应用)下；</li>
+                                <li>CommandSide不同的CommandHandler、EventHandler可以不在同一个节点；</li>
+                                <li>不同CommandSide对同一个Aggregate的操作应具有原子性；<br>我们来一步步满足这三个要求。</li>
+                            </ul>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/04/01/axon-distribute.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-axon-saga" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/31/axon-saga.html">CQRS和Event
+                            Sourcing系列（七）：Saga的使用</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/31/axon-saga.html">
+                                    <time datetime="2017-03-31T03:37:32.000Z" itemprop="datePublished">2017-03-31</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg2"><p></p>
+                            <blockquote><p>在上一篇里面，我们正式的使用了CQRS模式完成了AXON的第一个真正的例子，但是细心的朋友会发现一个问题，创建订单时并没有检查商品库存。<br>库存是否足够直接回导致订单状态的成功与否，在并发时可能还会出现超卖。当库存不足时还需要回滚订单，所以这里出现了复杂的跨Aggregate事务问题。<br>Saga就是为解决这里复杂流程而生的。
+                            </p></blockquote>
+                            <h2 id="Saga"><a href="#Saga" class="headerlink" title="Saga"></a><strong>Saga</strong></h2>
+                            <p><strong>Saga</strong> 这个名词最早是由Hector Garcia-Molina和Kenneth Salem写的<a
+                                    href="http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf"
+                                    target="_blank" rel="external">Sagas</a>这篇论文里提出来的，但其实Saga并不是什么新事物，在我们传统的系统设计中，它有个更熟悉的名字——“ProcessManager”，只是换了个马甲，还是干同样的事——组合一组逻辑处理复杂流程。<br>但它与我们平常理解的“ProgressManager”又有不同，它的提出，最早是是为了解决分布式系统中长时间运行事务(long-running
+                                business process)的问题，把单一的transaction按照步骤分成一组若干子transaction，通过补偿机制实现最终一致性。<br>举个例子，在一个交易环节中有下单支付两个步骤，如果是传统方式，两个步骤在一个事务里，统一成功或回滚，然而如果支付时间很长，那么就会导致第一步，即下单这里所占用的资源被长时间锁定，可能会对系统可用性造成影响。如果用Saga来实现，那么下单是一个独立事务，下单的事务先提交，提交成功后开始支付的事务，如果支付成功，则支付的事务也提交，整个流程就算完成，但是如果支付事务执行失败，那么支付需要回滚，因为这时下单事务已经提交，则需要对下单操作进行补偿操作（可能是回滚，也可能是变成新状态）。<br>可以看到Saga是牺牲了数据的强一致性，实现最终一致性。
+                            </p>
+                            <p></p></div>
+                        <footer class="article-footer"><a href="http://edisonxu.org/2017/03/31/axon-saga.html#comments"
+                                                          class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-axon-cqrs-example" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/30/axon-cqrs-example.html">CQRS和Event
+                            Sourcing系列（六）： 第一个正式Axon例子</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/30/axon-cqrs-example.html">
+                                    <time datetime="2017-03-30T11:45:16.000Z" itemprop="datePublished">2017-03-30</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg3"><p></p>
+                            <blockquote><p>前面对Axon的基本概念和基本操作做了简介，从本章开始，我们将一步步使用AxonFramework完成一个真正CQRS&amp;EventSourcing的例子。</p>
+                            </blockquote>
+                            <h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2>
+                            <p>回顾一下使用AxonFramework应用的架构<br><a
+                                    href="http://edisonxu.org/images/2017/03/detailed-architecture-overview.png"
+                                    title="" class="gallery-item" lg-event-uid="&amp;1"><img
+                                    src="/images/2017/03/detailed-architecture-overview.png" alt=""></a></p>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/03/30/axon-cqrs-example.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-axon-event-sourcing" class="article article-type-post" itemscope=""
+                         itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/30/axon-event-sourcing.html">CQRS和Event
+                            Sourcing系列（五）： Axon使用EventSourcing和AutoConfigure</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/30/axon-event-sourcing.html">
+                                    <time datetime="2017-03-30T09:52:23.000Z" itemprop="datePublished">2017-03-30</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg4"><p></p>
+                            <blockquote><p>继上一篇集成SpringBoot后，本篇将继续完成小目标：</p>
+                                <ol>
+                                    <li>使用EventSourcing</li>
+                                    <li>使用AutoConfigure配置Axon</li>
+                                </ol>
+                            </blockquote>
+                            <p>前一篇中看到配置Axon即便在Spring中也是比较麻烦的，好在Axon提供了<code>spring-boot-autoconfigure</code>，提供了Spring下的一些默认配置，极大地方便了我们的工作。<br>启用也是非常方便的，在上一篇的基础上，我们只需要干三件事即可达成目标：
+                            </p>
+                            <ol>
+                                <li>引入<code>spring-boot-autoconfigure</code></li>
+                                <li>删除JpaConfig类</li>
+                                <li>去除<code>BankAccount</code>中的Entity声明</li>
+                            </ol>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/03/30/axon-event-sourcing.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-axon-jpa" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/30/axon-jpa.html">CQRS和Event
+                            Sourcing系列（四）： Axon使用Jpa存储Aggregate状态</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/30/axon-jpa.html">
+                                    <time datetime="2017-03-30T07:52:23.000Z" itemprop="datePublished">2017-03-30</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>,
+                                <a class="tag-link" href="/tags/eventsourcing/">eventsourcing</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg5"><p></p>
+                            <blockquote><p>上一篇里，介绍了Axon的基本概念，并且做了一个最简单的hello例子。本篇将更进一步，完成两个小目标：</p>
+                                <ol>
+                                    <li>集成SpringBoot；</li>
+                                    <li>使用Standard Repository来存储Aggregate的最新状态。</li>
+                                </ol>
+                            </blockquote>
+                            <h2 id="1-更新Maven依赖"><a href="#1-更新Maven依赖" class="headerlink" title="1. 更新Maven依赖"></a>1.
+                                更新Maven依赖</h2>
+                            <p>干几件事：</p>
+                            <p></p></div>
+                        <footer class="article-footer"><a href="http://edisonxu.org/2017/03/30/axon-jpa.html#comments"
+                                                          class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-hello-axon" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/30/hello-axon.html">CQRS和Event
+                            Sourcing系列（三）： Hello,Axon3</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/30/hello-axon.html">
+                                    <time datetime="2017-03-30T06:47:46.000Z" itemprop="datePublished">2017-03-30</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/DDD/">DDD</a>, <a class="tag-link" href="/tags/axon/">axon</a>
+                            </div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg6"><p></p>
+                            <blockquote><p>
+                                AxonFramework是一个轻量级的CQRS框架，支持EventSourcing，本系列将开始通过例子，StepByStep学习AxonFramework。</p>
+                            </blockquote>
+                            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2>
+                            <p><a href="www.axonframework.org">AxonFramework</a>是一个基于事件驱动的轻量级CQRS框架，既支持直接持久化Aggreaget状态，也支持采用EventSourcing，使用AxonFramework的应用架构如下<br><a
+                                    href="http://edisonxu.org/images/2017/03/detailed-architecture-overview.png"
+                                    title="" class="gallery-item" lg-event-uid="&amp;2"><img
+                                    src="/images/2017/03/detailed-architecture-overview.png" alt=""></a></p>
+                            <p></p></div>
+                        <footer class="article-footer"><a href="http://edisonxu.org/2017/03/30/hello-axon.html#comments"
+                                                          class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-hello-cqrs" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/23/hello-cqrs.html">CQRS和Event
+                            Sourcing系列（二）：基本概念</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/23/hello-cqrs.html">
+                                    <time datetime="2017-03-23T04:57:52.000Z" itemprop="datePublished">2017-03-23</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/CQRS/">CQRS</a>, <a
+                                    class="tag-link" href="/tags/axon/">axon</a>, <a class="tag-link"
+                                                                                     href="/tags/eventsourcing/">eventsourcing</a>
+                            </div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg7"><p></p>
+                            <blockquote><p>在研究微服务的过程中，跨服务的操作处理，尤其是带有事务性需要统一commit或rollback的，是比较麻烦的。本系列记录了我在研究这一过程中的心得体会。<br>本篇主要就以下几个问题进行介绍：
+                            </p>
+                                <ul>
+                                    <li>微服务中的一个大难题</li>
+                                    <li>DDD中的几个基本概念</li>
+                                    <li>什么是EventSourcing？</li>
+                                    <li>什么是CQRS？</li>
+                                    <li>EventSourcing和CQRS的关系？</li>
+                                    <li>CQRS/ES怎么解决微服务的难题？</li>
+                                </ul>
+                            </blockquote>
+                            <h2 id="微服务中的一个大难题"><a href="#微服务中的一个大难题" class="headerlink" title="微服务中的一个大难题"></a>微服务中的一个大难题
+                            </h2>
+                            <p>微服务架构已经热了有两年了，而且目测会越来越热，除非有更高级的架构出现。相关解释和说明，网上一搜一大堆，我这里就不重复了。一句话概括：<br>微服务将原来的N个模块，或者说服务，按照适当的边界，从单节点划分成一整个分布式系统中的若干节点上。<br><a
+                                    href="http://edisonxu.org/images/2017/03/microservice.png" title=""
+                                    class="gallery-item" lg-event-uid="&amp;3"><img
+                                    src="/images/2017/03/microservice.png" alt=""></a></p>
+                            <p></p></div>
+                        <footer class="article-footer"><a href="http://edisonxu.org/2017/03/23/hello-cqrs.html#comments"
+                                                          class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-lean-and-ddd" class="article article-type-post" itemscope="" itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/17/lean-and-ddd.html">CQRS和Event
+                            Sourcing系列（一）：论精益与领域设计</a></h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/17/lean-and-ddd.html">
+                                    <time datetime="2017-03-17T07:00:21.000Z" itemprop="datePublished">2017-03-17</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/DDD/">DDD</a>, <a
+                                    class="tag-link" href="/tags/感悟/">感悟</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg8"><p></p>
+                            <h2 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h2>
+                            <p>
+                                你是否遇到过这种事？一个“好”工程师，非常喜欢学习和钻研新的技术知识，JEE时代学习Spring，SSH时代学习分布式，大数据时代又开始学习Hadoop,Storm,云时代开始搞docker,k8……然后成长为一名“架构师”了，在他的公司，有一个重要项目，于是乎他决意把这个项目设计成一个全分布式的系统，毕竟“时髦”嘛。每一个小的开发团队负责分布式中的一个服务。由于架构师对这些程序员缺乏必要的指导和控制，每个程序员只熟悉自己负责的一小块工作，彼此间缺乏沟通和协作，这个项目的<code>概念完整性</code>很快就被破坏了，他们开始自行其事，分布式服务间大量的远程调用导致了性能和可伸缩性等多方面的问题，开发、测试、运维的工作难度与日递增。慢慢的，项目的开发人员，离职的越来越多，包含最初的架构师，代码的维护越来越难，最终只能重构，将十几个分布式服务合并为三个相对独立的集中应用。最初良好的架构，到最后沦为废墟。中间一位离职的程序员，换了一家公司，涨了一点工资，开始了另一段新系统建设的“狂欢”，周而复始，随着年龄的增大，他不再能够从软件开发中享受到乐趣，开发的生涯，对他来说痛苦开始多余快乐。学习新技术，他也比不上年轻人。运气好的话，他可以转产品、管理或做业务，运气不好的话，还得继续码代码，毕竟要养家糊口。从一家公司换到另一家公司……
+                            </p>
+                            <h2 id="“如果”"><a href="#“如果”" class="headerlink" title="“如果”"></a>“如果”</h2>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/03/17/lean-and-ddd.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <article id="post-java-thread-communication" class="article article-type-post" itemscope=""
+                         itemprop="blogPost">
+                    <div class="article-inner">
+                        <header class="article-header"><h1 itemprop="name"><a class="article-title"
+                                                                              href="/2017/03/02/java-thread-communication.html">JAVA线程间通信的几种方式</a>
+                        </h1>
+                            <div class="article-meta">
+                                <div class="article-date"><i class="fa fa-calendar"></i> <a
+                                        href="/2017/03/02/java-thread-communication.html">
+                                    <time datetime="2017-03-02T13:10:44.000Z" itemprop="datePublished">2017-03-02</time>
+                                </a></div>
+                                <i class="fa fa-tag"></i> <a class="tag-link" href="/tags/多线程/">多线程</a></div>
+                        </header>
+                        <div class="article-entry" itemprop="articleBody" lg-uid="lg9"><p></p>
+                            <blockquote><p>今天在群里面看到一个很有意思的面试题：<br>“编写两个线程，一个线程打印1~25，另一个线程打印字母A~Z，打印顺序为12A34B56C……5152Z，要求使用线程间的通信。”<br>这是一道非常好的面试题，非常能彰显被面者关于多线程的功力，一下子就勾起了我的兴趣。这里抛砖引玉，给出7种想到的解法。
+                            </p></blockquote>
+                            <h2 id="1-第一种解法，包含多种小的不同实现方式，但一个共同点就是靠一个共享变量来做控制；"><a
+                                    href="#1-第一种解法，包含多种小的不同实现方式，但一个共同点就是靠一个共享变量来做控制；" class="headerlink"
+                                    title="1. 第一种解法，包含多种小的不同实现方式，但一个共同点就是靠一个共享变量来做控制；"></a>1.
+                                第一种解法，包含多种小的不同实现方式，但一个共同点就是<strong>靠一个共享变量来做控制</strong>；</h2>
+                            <h3 id="a-利用最基本的synchronized、notify、wait："><a href="#a-利用最基本的synchronized、notify、wait："
+                                                                          class="headerlink"
+                                                                          title="a. 利用最基本的synchronized、notify、wait："></a>a.
+                                利用最基本的<code>synchronized</code>、<code>notify</code>、<code>wait</code>：</h3>
+                            <p></p></div>
+                        <footer class="article-footer"><a
+                                href="http://edisonxu.org/2017/03/02/java-thread-communication.html#comments"
+                                class="article-comment-link">评论</a>
+                            <div class="share-container">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1514988256179"><a
+                                        href="#" class="bds_more" data-cmd="more">分享到：</a> <a href="#" class="bds_qzone"
+                                                                                              data-cmd="qzone"
+                                                                                              title="分享到QQ空间">QQ空间</a>
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a> <a href="#"
+                                                                                                               class="bds_tqq"
+                                                                                                               data-cmd="tqq"
+                                                                                                               title="分享到腾讯微博">腾讯微博</a>
+                                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a> <a href="#"
+                                                                                                               class="bds_weixin"
+                                                                                                               data-cmd="weixin"
+                                                                                                               title="分享到微信">微信</a>
+                                </div>
+                                <script>with (window._bd_share_config = {
+                                    common: {
+                                        bdSnsKey: {},
+                                        bdText: "",
+                                        bdMini: "2",
+                                        bdMiniList: !1,
+                                        bdPic: "",
+                                        bdStyle: "0",
+                                        bdSize: "16"
+                                    }, share: {bdSize: 16}
+                                }, document) (getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=" + ~(-new Date / 36e5)</script>
+                                <style>.bdshare_popup_box {
+                                    border-radius: 4px;
+                                    border: #e1e1e1 solid 1px
+                                }
+
+                                .bdshare-button-style0-16 .bds_more, .bdshare-button-style0-16 a {
+                                    padding-left: 20px;
+                                    margin: 6px 10px 6px 0
+                                }
+
+                                .bdshare_dialog_list a, .bdshare_popup_bottom a, .bdshare_popup_list a {
+                                    font-family: 'Microsoft Yahei'
+                                }
+
+                                .bdshare_popup_top {
+                                    display: none
+                                }
+
+                                .bdshare_popup_bottom {
+                                    height: auto;
+                                    padding: 5px
+                                }</style>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <nav id="page-nav"><span class="page-number current">1</span><a class="page-number"
+                                                                                href="/page/2/">2</a><a
+                        class="extend next" rel="next" href="/page/2/">下一页 »</a></nav>
+            </section>
+            <aside id="sidebar">
+                <div class="widget-wrap"><h3 class="widget-title">公告</h3>
+                    <div class="widget">
+                        <div class="card-front animated col s12 m12 l8 offset-l2 fadeInUp"><p class="board"> 您好，您是第<span
+                                id="busuanzi_value_site_uv">7303</span>位访客<br> QQ：228831793<br> 微信：fei158383<br>
+                            邮箱：edisonxu@outlook.com<br> CQRS&amp;ES交流群：57241527<br><br> 欢迎交流与分享经验!</p></div>
+                    </div>
+                </div>
+                <div class="widget-wrap"><h3 class="widget-title">归档</h3>
+                    <div class="widget">
+                        <ul class="archive-list">
+                            <li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月
+                                2017</a><span class="archive-list-count">2</span></li>
+                            <li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月
+                                2017</a><span class="archive-list-count">8</span></li>
+                            <li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月
+                                2017</a><span class="archive-list-count">2</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-wrap"><h3 class="widget-title">标签云</h3>
+                    <div class="widget tagcloud"><a href="/tags/CQRS/" style="font-size:20px">CQRS</a> <a
+                            href="/tags/DDD/" style="font-size:20px">DDD</a> <a href="/tags/akka/"
+                                                                                style="font-size:10px">akka</a> <a
+                            href="/tags/axon/" style="font-size:20px">axon</a> <a href="/tags/eventsourcing/"
+                                                                                  style="font-size:20px">eventsourcing</a>
+                        <a href="/tags/eventuate/" style="font-size:10px">eventuate</a> <a href="/tags/多线程/"
+                                                                                           style="font-size:10px">多线程</a>
+                        <a href="/tags/感悟/" style="font-size:10px">感悟</a> <a href="/tags/杂项/"
+                                                                             style="font-size:10px">杂项</a></div>
+                </div>
+                <div class="widget-wrap widget-list"><h3 class="widget-title">链接</h3>
+                    <div class="widget">
+                        <ul>
+                            <li><a href="http://bbs.springcloud.cn">SpringCloud中文社区</a></li>
+                            <li><a href="http://itmuch.com">周立|Spring Cloud</a></li>
+                            <li><a href="http://blog.didispace.com">程序猿DD</a></li>
+                            <li><a href="http://blog.xujin.org">许进|沉思录</a></li>
+                            <li><a href="http://edisonxu.org">EdisonXu</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="toTop" class="fa fa-angle-up"></div>
+            </aside>
+        </div>
+
+
+    </div>
+
+</div>
+</body>
+</html>
